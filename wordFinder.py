@@ -12,6 +12,7 @@ sh = wrkbk.active
 
 searchable = []
 results = []
+remove = []
 
 for row in sh.iter_rows(min_row = 1, min_col = 1, max_row = 6000, max_col = 1):
     for cell in row:
@@ -26,9 +27,14 @@ for letter in known:
 for word in results:
     for letter in word:
         if (letter not in known):
-            try:
-                results.remove(word)
-            except:
-                break
+            remove.append(word)
+
+remove = list(set(remove))
+
+for item in remove:
+    results.remove(item)
+        
+
+results = list(set(results))
 
 print(results)
