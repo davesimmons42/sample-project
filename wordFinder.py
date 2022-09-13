@@ -23,4 +23,12 @@ for letter in known:
         if(letter in word):
             results.append(word)
 
+for word in results:
+    for letter in word:
+        if (letter not in known):
+            try:
+                results.remove(word)
+            except:
+                break
+
 print(results)
